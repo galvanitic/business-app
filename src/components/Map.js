@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import api_key from '../google-api-key'
+import api_key from '../api-keys'
 
 
 

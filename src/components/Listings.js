@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import api_key from '../google-api-key';
+import api_key from '../api-keys';
 
 const routeToAdd = () => {
   console.log('Redirected to /add')
