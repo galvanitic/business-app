@@ -21,6 +21,9 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  menu: {
+    marginTop: 40,
+  },
 }));
 
 
@@ -35,17 +38,20 @@ let NavBar = () => {
     setAnchorEl(null);
   };
 
+  const handleListingsClick = () => {
+    console.log('Redirected to home')
+    window.location.replace('/')
+  }
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
             Small Business
           </Typography>
+          {true ? <Button color="inherit" onClick={handleListingsClick}>Listings</Button> : null}
           <Button color="inherit" onClick={handleClick}>Login</Button>
         </Toolbar>
         <Menu
@@ -54,8 +60,9 @@ let NavBar = () => {
           keepMounted
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          className={classes.menu}
         >
-          <MenuItem><Login /></MenuItem>
+          <MenuItem ><Login /></MenuItem>
         </Menu>
       </AppBar>
     </div>

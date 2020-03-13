@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from "react-router";
-import LandingPage from './components/LandingPage';
-import LandingPageProtected from './components/LandingPageProtected';
+import Listings from './components/Listings';
+import SmallBusinessDetails from './components/SmallBusinessDetails';
+import AddListing from './components/AddListing';
 
 const checkAuth = () => {
   return true;
@@ -21,8 +22,9 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 const Router = () => {
   return(
     <Switch>
-      <Route path='/' component={LandingPage} />
-      <ProtectedRoute path='/edit' component={LandingPageProtected} />
+      <Route exact path='/' component={Listings} />
+      <Route path='/details' component={SmallBusinessDetails} />
+      <ProtectedRoute path='/add' component={AddListing} />
     </Switch>
   )
 }

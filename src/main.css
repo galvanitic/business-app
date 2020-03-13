@@ -1,0 +1,74 @@
+body .login-container {
+  width: 15vw;
+}
+
+body .login-container form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .login-container form .login-item {
+  width: 95% !important;
+}
+
+body .floater-add {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+}
+
+body #add-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 90vh;
+}
+
+body #add-container #add-form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  height: 50vh;
+  padding: 0% 2%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body #add-container #add-form-container #add-button {
+  margin: 10px 0 !important;
+}
+
+body #add-container #add-map-container {
+  width: 50vw;
+  height: 50vh;
+}
+
+body #add-container #add-map-container #map {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=main.css.map */

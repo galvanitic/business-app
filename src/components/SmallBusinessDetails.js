@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class LandingPage extends Component {
+class SmallBusinessDetails extends Component {
   render() {
     return (
       <div>
-        A Map here prob... idk...
+         SBD Component
       </div>
     );
   }
 }
 
-export default LandingPage;
+export default SmallBusinessDetails;
