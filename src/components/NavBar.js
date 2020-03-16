@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Login from './Login';
+import Login from '../containers/Login';
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-let NavBar = () => {
+let NavBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -43,6 +43,10 @@ let NavBar = () => {
     window.location.replace('/')
   }
 
+  const handleLogout = () => {
+    props.logout()
+  }
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -52,7 +56,7 @@ let NavBar = () => {
             Small Business
           </Typography>
           {true ? <Button color="inherit" onClick={handleListingsClick}>Listings</Button> : null}
-          <Button color="inherit" onClick={handleClick}>Login</Button>
+          {props.loggedIn ? <Button color="inherit" onClick={handleLogout}>Logout</Button> : <Button color="inherit" onClick={handleClick}>Login</Button>}
         </Toolbar>
         <Menu
           id="simple-menu"
@@ -65,6 +69,7 @@ let NavBar = () => {
           <MenuItem ><Login /></MenuItem>
         </Menu>
       </AppBar>
+    {props.loggedIn ? <div className='logged-status'>Hi {props.user.first_name}! 👋</div> : null}
     </div>
   );
 }

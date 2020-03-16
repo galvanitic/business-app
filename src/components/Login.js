@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = () => {
+const Login = (props) => {
   const classes = useStyles();
 
   return (
@@ -20,7 +20,7 @@ const Login = () => {
       <form className={classes.root} noValidate autoComplete="off">
       <TextField className='login-item' id="outlined-basic" label="email" variant="outlined" />
       <TextField type='password' className='login-item' id="outlined-basic" label="password" variant="outlined" />
-      <Button className='login-item' variant="outlined" color="primary">
+      <Button className='login-item' variant="outlined" color="primary" onClick={props.login}>
         Login
       </Button>
       </form>

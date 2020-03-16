@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from "react-router";
-import Listings from './components/Listings';
+import Listings from './containers/Listings';
 import SmallBusinessDetails from './components/SmallBusinessDetails';
-import AddListing from './components/AddListing';
+import AddListing from './containers/AddListing';
 
 const checkAuth = () => {
   return true;

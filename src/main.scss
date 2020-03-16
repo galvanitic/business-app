@@ -1,4 +1,10 @@
 body {
+  .logged-status {
+    padding: 7px 2%;
+    background-color: rgb(163, 163, 163);
+    color: rgb(33, 33, 92);
+    font-weight: bold;
+  }
   .login-container {
     width: 15vw;
     form {

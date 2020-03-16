@@ -11,7 +11,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import api_key from '../api-keys';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const routeToAdd = () => {
   console.log('Redirected to /add')
@@ -19,21 +20,17 @@ const routeToAdd = () => {
 }
 
 class Listings extends React.Component{
+  state = {
+    places: [],
+    isLoading: true
+  }
   componentDidMount(){
-    // let lat, long;
-    navigator.geolocation.getCurrentPosition(pos => {
-      const lat = pos.coords.latitude.toString()
-      const long = pos.coords.longitude.toString()
-      const location = `${lat},${long}`
-      let endpoint = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&rankby=distance&type=food&key=${api_key}`;
-      fetch(endpoint)
-      .then(response => response.json())
-      .then(res => console.log(res));
-    });
+    this.props.fetchPlaces();
+    this.setState({isLoading: false});
   }
   render(){
-  return (
-    <div>
+    return (
+      <div>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -42,28 +39,32 @@ class Listings extends React.Component{
               <TableCell align="right">Description</TableCell>
               <TableCell align="right">Hours</TableCell>
               <TableCell align="right">Address</TableCell>
-              {true ? <TableCell align="right">Delete</TableCell> : null}
+              {this.props.loggedIn ? <TableCell align="right">Delete</TableCell> : null}
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow >
-              <TableCell component="th" scope="row">
-              </TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right">{true 
-                ? 
-                <IconButton aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-                : null}
-              </TableCell>
-            </TableRow>
+            {this.state.isLoading ? <CircularProgress color="secondary" /> : this.props.places.map((place, i) => {
+              return(
+              <TableRow key={i}>
+                <TableCell component="th" scope="row">
+                  {place.name}
+                </TableCell>
+                <TableCell align="right">{place.types[1]}</TableCell>
+                <TableCell align="right">{place.weekday_text}</TableCell>
+                <TableCell align="right">{place.vicinity}</TableCell>
+                <TableCell align="right">{this.props.loggedIn 
+                  ? 
+                  <IconButton aria-label="delete" place={i} onClick={() => this.props.rmPlace(i)}>
+                    <DeleteIcon />
+                  </IconButton>
+                  : null}
+                </TableCell>
+              </TableRow>)
+            })}
           </TableBody>
         </Table>
       </TableContainer>
-      {true
+      {this.props.loggedIn
       ?
       <Fab className='floater-add' color="primary" aria-label="add">
         <AddIcon onClick={routeToAdd} />

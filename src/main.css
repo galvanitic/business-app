@@ -1,3 +1,10 @@
+body .logged-status {
+  padding: 7px 2%;
+  background-color: #a3a3a3;
+  color: #21215c;
+  font-weight: bold;
+}
+
 body .login-container {
   width: 15vw;
 }
